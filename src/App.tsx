@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import Quotes from './pages/quote'
+
+export type QuotesType = {
+  id: number
+  quote: string
+  author: string
+}
 
 function App() {
 
-  type Quotes = {
-    id: number
-    quote: string
-    author: string
-  }
-
-
-  const [quotes, setQuotes] = useState<Quotes[]>([])
+  const [quotes, setQuotes] = useState<QuotesType[]>([])
 
   useEffect(() => {
     fetch(`http://localhost:4000/quotes`)
@@ -23,16 +23,7 @@ function App() {
     <div className="App">
       {
         quotes.map(quote =>
-          <blockquote key={quote.id} className='quoteContainer'>
-
-            <p className='quote'>
-              {quote.quote}
-            </p>
-            <h3 className='author'>
-              {quote.author}
-            </h3>
-
-          </blockquote>
+          <Quotes quote={quote} key={quote.id} />
         )}
     </div>
   )
