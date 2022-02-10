@@ -11,6 +11,15 @@ export type QuotesType = {
 function App() {
 
   const [quotes, setQuotes] = useState<QuotesType[]>([])
+  const [singleQuote, setSingleQuote] = useState<QuotesType[]>([])
+
+  useEffect(() => {
+    fetch(`http://localhost:4000/quotes/1`)
+      .then(resp => resp.json())
+      .then(quoteFromServer => setSingleQuote(quoteFromServer))
+  }, [])
+
+  console.log({ singleQuote })
 
   useEffect(() => {
     fetch(`http://localhost:4000/quotes`)
