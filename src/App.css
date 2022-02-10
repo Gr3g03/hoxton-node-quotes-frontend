@@ -4,17 +4,17 @@
   box-sizing: border-box;
 
 }
-.App{
 
-}
 .quoteContainer {
   margin: 0 auto 2em;
   max-width: 700px;
   padding-left: 4em;
   padding-right: 4em;
-  padding-top: 4em;
+  padding-top: 2em;
   box-sizing: border-box;
   font-family: "Inter", "Source Sans Pro", "Helvetica Neue";
+  color: rgb(240, 4, 4);
+
 }
 
 p::before {
@@ -27,6 +27,7 @@ p::before {
   top: -0.5rem;
   background-size: contain;
   background-repeat: no-repeat;
+  color: rgb(240, 4, 4);
   
 }
 
@@ -36,14 +37,20 @@ p::before {
   line-height: 1.6em;
   font-style: italic;
   position: relative;
-  /* background-color: bisque; */
-
+  background-color: rgb(56, 55, 55);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 0.5rem;
 }
 
 .author{
-  /* background-color: bisque; */
   font-weight: 400;
   font-size: 22px;
   line-height: 1.6em;
   font-style: italic;
+  background-color: rgb(56, 55, 55);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 0.5rem;
+  text-align: right;
 }
