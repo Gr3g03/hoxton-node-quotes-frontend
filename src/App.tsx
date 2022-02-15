@@ -41,9 +41,10 @@ function App() {
     <div className="App">
 
       <Routes>
-        <Route index element={<Navigate replace to="/quotes" />} />
+        <Route path='/' element={<Quotes quotes={quotes} />} />
         <Route path='/quotes' element={<Quotes quotes={quotes} />} />
-        <Route path='/quotes/:id' element={<SingleQuote quotes={quotes} />} />
+        <Route path='/quotes/:id' element={<SingleQuote />} />
+        <Route index element={<Navigate replace to="/quotes" />} />
       </Routes>
     </div>
   )

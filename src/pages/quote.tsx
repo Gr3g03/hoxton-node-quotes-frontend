@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { QuotesType } from "../App"
 
@@ -8,14 +7,8 @@ type props = {
     quotes: QuotesType[]
 }
 
-
 export default function Quotes({ quotes }: props) {
     const [newQuote, setNewQoute] = useState<QuotesType[]>([])
-
-    const params = useParams()
-    const quotesss = quotes.find((filtredQuote) => filtredQuote.id === Number(params.id));
-
-
 
 
     function addNewQuote(quote: string, author: string, age: number, firstName: string, lastName: string, img: string) {
@@ -50,9 +43,7 @@ export default function Quotes({ quotes }: props) {
 
 
     return (
-
         <>
-
             <form className="new-Quote" onSubmit={(e) => {
                 e.preventDefault()
                 // @ts-ignore
@@ -66,15 +57,18 @@ export default function Quotes({ quotes }: props) {
                 <label htmlFor="lastName">Last name</label>
                 <input name="lastName" id="lastName" type="text" />
 
-                <label htmlFor="phoneNumber">quote</label>
-                <input name="quote" id="text" type="text" />
+                <label htmlFor="quote">quote</label>
+                <input name="quote" id="quote" type="text" />
 
-                <button type="submit">CREATE USER</button>
+                <label htmlFor="author">author</label>
+                <input name="author" id="author" type="text" />
+
+                <button type="submit">Submit</button>
             </form>
 
             {
                 quotes.map(quote =>
-                    <Link to={`/qoutes/${quote.id}`}>
+                    <Link to={`/quotes/${quote?.id}`} key={quote.id}>
                         <blockquote key={quote.id} className='quoteContainer'>
                             <p className='quote'>
                                 {quote.quote}
