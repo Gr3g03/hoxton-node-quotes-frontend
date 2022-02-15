@@ -5,9 +5,10 @@ import { QuotesType } from "../App"
 
 type props = {
     quotes: QuotesType[]
+    deleteQuote: any
 }
 
-export default function Quotes({ quotes }: props) {
+export default function Quotes({ quotes, deleteQuote }: props) {
     const [newQuote, setNewQoute] = useState<QuotesType[]>([])
 
 
@@ -44,41 +45,53 @@ export default function Quotes({ quotes }: props) {
 
     return (
         <>
-            <form className="new-Quote" onSubmit={(e) => {
-                e.preventDefault()
-                // @ts-ignore
-                addNewQuote(e.target.firstName.value, e.target.lastName.value, e.target.quote.value)
-                // @ts-ignore
-                e.target.reset()
-            }}>
-                <label htmlFor="firstName">First name</label>
-                <input name="firstName" id="firstName" type="text" />
-
-                <label htmlFor="lastName">Last name</label>
-                <input name="lastName" id="lastName" type="text" />
-
-                <label htmlFor="quote">quote</label>
-                <input name="quote" id="quote" type="text" />
-
-                <label htmlFor="author">author</label>
-                <input name="author" id="author" type="text" />
-
-                <button type="submit">Submit</button>
-            </form>
 
             {
                 quotes.map(quote =>
-                    <Link to={`/quotes/${quote?.id}`} key={quote.id}>
-                        <blockquote key={quote.id} className='quoteContainer'>
+                    <blockquote key={quote.id} className='quoteContainer'>
+                        <Link to={`/quotes/${quote?.id}`} key={quote.id}>
                             <p className='quote'>
                                 {quote.quote}
                             </p>
                             <h3 className='author'>
                                 {quote.author}
                             </h3>
-                        </blockquote>
-                    </Link>
+
+                        </Link>
+                        <button className="delteButton" onClick={() => {
+                            deleteQuote(quote)
+                        }
+                        }>X</button>
+                    </blockquote>
                 )}
+
+            <form className="new-Quote" onSubmit={(e) => {
+                e.preventDefault()
+                // @ts-ignore
+                addNewQuote(e.target.firstName.value, e.target.lastName.value, e.target.quote.value, e.target.author.value, e.target.img.value, e.target.age.value)
+                // @ts-ignore
+                e.target.reset()
+            }}>
+                <label htmlFor="firstName">Firstname</label>
+                <input name="firstName" id="firstName" type="text" />
+
+                <label htmlFor="lastName">Lastname</label>
+                <input name="lastName" id="lastName" type="text" />
+
+                <label htmlFor="quote">quote</label>
+                <input name="quote" id="quote" type="textarea " />
+
+                <label htmlFor="author">author</label>
+                <input name="author" id="author" type="text" />
+
+                <label htmlFor="age">age</label>
+                <input name="age" id="age" type="number" />
+
+                <label htmlFor="img">image</label>
+                <input name="img" id="img" type="text" />
+
+                <button type="submit">Submit</button>
+            </form>
         </>
     )
 }

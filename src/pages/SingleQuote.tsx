@@ -26,8 +26,8 @@ export default function SingleQuote() {
             />
             <div className="product-detail__side"  >
                 <h2 >  {quote?.quote}</h2>
-                <p>{quote?.author} </p>
-                <p>{quote?.age}</p>
+                <p> {quote?.author} </p>
+                <p>Age: {quote?.age}</p>
             </div>
 
         </section>

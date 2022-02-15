@@ -5,6 +5,11 @@
 
 }
 
+.quoteContainer a{ 
+  color: rgb(240, 4, 4);
+   text-decoration: none;
+  }
+
 .quoteContainer {
   margin: 0 auto 2em;
   max-width: 700px;
@@ -17,9 +22,12 @@
 
 }
 
+
+
+
 p::before {
-  position: absolute;
-  content: "“";
+  /* position: absolute; */
+  /* content: "“"; */
   font-size: 100px;
   font-weight: 400;
   font-style: normal;
@@ -28,7 +36,7 @@ p::before {
   background-size: contain;
   background-repeat: no-repeat;
   color: rgb(240, 4, 4);
-  
+    text-decoration: none;
 }
 
 .quote {
@@ -36,11 +44,17 @@ p::before {
   font-size: 22px;
   line-height: 1.6em;
   font-style: italic;
-  position: relative;
+  /* position: relative; */
   background-color: rgb(56, 55, 55);
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   padding: 0.5rem;
+}
+
+.delteButton{
+  position: absolute;
+  /* top: 0; */
+  right: 27%;
 }
 
 .author{
@@ -53,4 +67,82 @@ p::before {
   border-bottom-left-radius: 5px;
   padding: 0.5rem;
   text-align: right;
+  
+}
+
+
+/* single quote  */
+
+.product-detail {
+  display: grid;
+  margin: 0 auto;
+  column-gap: 2rem;
+  grid-template-columns: 2fr 6fr;
+  padding: 2rem;
+  height: 100%;
+  
+}
+
+.product-detail > img {
+  align-self: center;
+  width: 500px;
+  
+}
+
+.product-detail__side {
+  position: relative;
+  display: grid;
+  /* grid-template-rows: 20% auto; */
+  align-content: start;
+  padding-left: 1rem;
+}
+
+.product-detail__side h3 {
+  align-self: start;
+}
+
+.product-detail__side h2 {
+  margin: 1rem 0;
+}
+
+.product-detail__side p {
+  max-width: 50%;
+  max-height: 150ch;
+  margin-top: 1rem;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Form  */
+
+.new-Quote {
+  display: grid;
+  gap: 5px;
+  width: 200px;
+  border: 1px solid black;
+  align-items: center;
+  justify-items: center;
+  margin-top: 2rem;
+  margin-left: 500px;
+  padding: 1rem;
+  
+}
+
+.new-Quote input {
+  border: 0.3px solid  black;
+  display: grid;
+  place-items: center;
+  border-radius: 5rem;
+  
+}
+
+
+.new-Quote button {
+  background-color: #002f96;
+  display: grid;
+  place-self: center;
+  color: white;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
 }

@@ -17,6 +17,7 @@ export type QuotesType = {
 function App() {
 
   const [quotes, setQuotes] = useState<QuotesType[]>([])
+  const [singleQuote, setSingleQuote] = useState<QuotesType[]>([])
 
   useEffect(() => {
     fetch(`http://localhost:4000/quotes`)
@@ -26,23 +27,30 @@ function App() {
 
 
 
+  function deleteQuote(quote: any) {
+    return fetch(`http://localhost:4000/quotes/${quote.id}`, {
+      method: "DELETE"
+    }).then(() => {
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:4000/quotes/1`)
-  //     .then(resp => resp.json())
-  //     .then(quoteFromServer => setSingleQuote(quoteFromServer))
-  // }, [])
+      const updatedImage = JSON.parse(JSON.stringify(quotes))
+      updatedImage.filter((targetPost: any) => targetPost.id !== quote.id)
+      setQuotes(updatedImage)
+    })
+  }
 
-  // console.log({ singleQuote })
-
+  useEffect(() => {
+    fetch(`http://localhost:4000/quotes/1`)
+      .then(resp => resp.json())
+      .then(quoteFromServer => setSingleQuote(quoteFromServer))
+  }, [])
 
 
   return (
     <div className="App">
 
       <Routes>
-        <Route path='/' element={<Quotes quotes={quotes} />} />
-        <Route path='/quotes' element={<Quotes quotes={quotes} />} />
+        <Route path='/' element={<Quotes quotes={quotes} deleteQuote={deleteQuote} />} />
+        <Route path='/quotes' element={<Quotes quotes={quotes} deleteQuote={deleteQuote} />} />
         <Route path='/quotes/:id' element={<SingleQuote />} />
         <Route index element={<Navigate replace to="/quotes" />} />
       </Routes>
