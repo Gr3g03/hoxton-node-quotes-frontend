@@ -23,7 +23,7 @@ export type QuotesType = {
 function App() {
 
   const [quotes, setQuotes] = useState<QuotesType[]>([])
-  const [singleQuote, setSingleQuote] = useState<QuotesType[]>([])
+  // const [singleQuote, setSingleQuote] = useState<QuotesType[]>([])
 
   console.log(quotes)
   useEffect(() => {
