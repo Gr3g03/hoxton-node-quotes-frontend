@@ -18,6 +18,7 @@ export default function SingleQuote() {
     }, [])
 
 
+
     return (
         <section className="product-detail main-wrapper">
             <img

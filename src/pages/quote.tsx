@@ -54,7 +54,7 @@ export default function Quotes({ quotes, deleteQuote }: props) {
                                 {quote.quote}
                             </p>
                             <h3 className='author'>
-                                {quote.author}
+                                {quote.authors}
                             </h3>
 
                         </Link>

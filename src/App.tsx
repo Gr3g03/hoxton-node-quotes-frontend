@@ -7,11 +7,17 @@ import SingleQuote from './pages/SingleQuote'
 export type QuotesType = {
   id: number
   quote: string
-  author: string
-  age: number;
-  firstName: string;
-  lastName: string;
-  img: string;
+  authorId: number;
+  authors: [
+    {
+      author: string
+      age: number;
+      firstName: string;
+      lastName: string;
+      img: string;
+    }
+  ]
+
 }
 
 function App() {
@@ -19,6 +25,7 @@ function App() {
   const [quotes, setQuotes] = useState<QuotesType[]>([])
   const [singleQuote, setSingleQuote] = useState<QuotesType[]>([])
 
+  console.log(quotes)
   useEffect(() => {
     fetch(`http://localhost:4000/quotes`)
       .then(resp => resp.json())
@@ -38,11 +45,11 @@ function App() {
     })
   }
 
-  useEffect(() => {
-    fetch(`http://localhost:4000/quotes/1`)
-      .then(resp => resp.json())
-      .then(quoteFromServer => setSingleQuote(quoteFromServer))
-  }, [])
+  // useEffect(() => {
+  //   fetch(`http://localhost:4000/quotes/1`)
+  //     .then(resp => resp.json())
+  //     .then(quoteFromServer => setSingleQuote(quoteFromServer))
+  // }, [])
 
 
   return (
