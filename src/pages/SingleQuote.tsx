@@ -10,13 +10,12 @@ export default function SingleQuote() {
 
     const params = useParams()
 
-    const [quote, setQuote] = useState<props | null>(null)
+    const [quote, setQuote] = useState<props>()
     useEffect(() => {
         fetch(`http://localhost:4000/quotes/${params.id}`)
             .then(resp => resp.json())
             .then(quoteFromServer => setQuote(quoteFromServer))
     }, [])
-
 
 
     return (
@@ -27,7 +26,7 @@ export default function SingleQuote() {
             />
             <div className="product-detail__side"  >
                 <h2 >  {quote?.quote}</h2>
-                <p> {quote?.author} </p>
+                <p>{quote?.author} </p>
                 <p>Age: {quote?.age}</p>
             </div>
 
