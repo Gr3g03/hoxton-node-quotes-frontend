@@ -25,7 +25,7 @@ export default function SingleQuote() {
     return (
         <section className="product-detail main-wrapper">
             <img
-                src={quote?.img}
+                src={quote?.image}
                 alt={quote?.firstName}
             />
             <div className="product-detail__side"  >

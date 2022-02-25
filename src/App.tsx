@@ -7,16 +7,13 @@ import SingleQuote from './pages/SingleQuote'
 export type QuotesType = {
   id: number
   quote: string
-  authorId: number;
-  authors: [
-    {
-      author: string
-      age: number;
-      firstName: string;
-      lastName: string;
-      img: string;
-    }
-  ]
+  author: string
+  firstName: string;
+  lastName: string;
+  age: number;
+  image: string;
+
+
 
 }
 

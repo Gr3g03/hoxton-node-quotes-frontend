@@ -12,7 +12,7 @@ export default function Quotes({ quotes, deleteQuote }: props) {
     const [newQuote, setNewQoute] = useState<QuotesType[]>([])
 
 
-    function addNewQuote(quote: string, author: string, age: number, firstName: string, lastName: string, img: string) {
+    function addNewQuote(quote: string, author: string, firstName: string, lastName: string, age: number, image: string) {
         fetch(`http://localhost:4000/quotes`, {
             method: "POST",
             headers: {
@@ -21,10 +21,10 @@ export default function Quotes({ quotes, deleteQuote }: props) {
             body: JSON.stringify({
                 quote: quote,
                 author: author,
-                age: age,
                 firstName: firstName,
                 lastName: lastName,
-                img: img
+                age: age,
+                image: image
             })
         }).then(resp => resp.json())
             .then(() => {
@@ -32,10 +32,10 @@ export default function Quotes({ quotes, deleteQuote }: props) {
                 updatedUser.push({
                     quote: quote,
                     author: author,
-                    age: age,
                     firstName: firstName,
                     lastName: lastName,
-                    img: img
+                    age: age,
+                    image: image
                 })
                 setNewQoute(updatedUser)
             })
@@ -54,7 +54,7 @@ export default function Quotes({ quotes, deleteQuote }: props) {
                                 {quote.quote}
                             </p>
                             <h3 className='author'>
-                                {quote.authors}
+                                {quote.author}
                             </h3>
 
                         </Link>
@@ -68,7 +68,7 @@ export default function Quotes({ quotes, deleteQuote }: props) {
             <form className="new-Quote" onSubmit={(e) => {
                 e.preventDefault()
                 // @ts-ignore
-                addNewQuote(e.target.firstName.value, e.target.lastName.value, e.target.quote.value, e.target.author.value, e.target.img.value, e.target.age.value)
+                addNewQuote(e.target.firstName.value, e.target.lastName.value, e.target.quote.value, e.target.author.value, e.target.image.value, e.target.age.value)
                 // @ts-ignore
                 e.target.reset()
             }}>
@@ -87,8 +87,8 @@ export default function Quotes({ quotes, deleteQuote }: props) {
                 <label htmlFor="age">age</label>
                 <input name="age" id="age" type="number" />
 
-                <label htmlFor="img">image</label>
-                <input name="img" id="img" type="text" />
+                <label htmlFor="image">image</label>
+                <input name="image" id="image" type="text" />
 
                 <button type="submit">Submit</button>
             </form>
